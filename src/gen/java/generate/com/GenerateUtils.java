@@ -11,19 +11,21 @@ import java.util.List;
 public class GenerateUtils {
 
     /**
-     * ファイル一覧の取得
+     * ファイル一覧の取得<br>
+     * 対象ディレクトリ直下のファイルのみ対象<br>
+     * 対象ファイルはglob構文で記載
      * @param dir
-     * @param fileNmRegex
+     * @param fileNmGlob
      * @return ファイル一覧
      * @throws IOException
      */
     public static List<Path> getFileList(Path dir,
-                                         String fileNmRegex) throws IOException {
+                                         String fileNmGlob) throws IOException {
         // 検索結果の格納List
         List<Path> list = new ArrayList<Path>();
 
         // 検索処理
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, fileNmRegex)) {
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, fileNmGlob)) {
             stream.forEach(list::add);
         }
 
@@ -32,6 +34,7 @@ public class GenerateUtils {
 
     /**
      * ファイルパスから拡張子を除いたファイル名を取得<br>
+     * 例）C:\test.txt → test
      * @param filePath
      * @return ファイル名
      */
@@ -41,7 +44,7 @@ public class GenerateUtils {
     }
 
     /**
-     * ファイル名からファイルパスを取得
+     * クラスパス配下のファイル名からファイルパスを取得
      * @param fileNm
      * @return path
      */

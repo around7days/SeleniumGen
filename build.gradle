@@ -27,7 +27,7 @@ dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.+'
 
     // logging
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '+'
+//    compile group: 'org.slf4j', name: 'slf4j-simple', version: '+'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '+'
 
     // generate tool

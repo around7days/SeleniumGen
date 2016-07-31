@@ -73,7 +73,7 @@ public class GenerateHtmlToExcel {
         logger.debug("★getFileList");
         List<Path> fileList = getFileList();
         for (Path path : fileList) {
-            logger.debug("対象HTMLファイル : {}", path.toString());
+            logger.info("対象HTMLファイル -> {}", path.toString());
 
             // HTMLページ解析
             logger.debug("★analyze");
@@ -83,6 +83,10 @@ public class GenerateHtmlToExcel {
             logger.debug("★generate");
             generate(pageBean);
         }
+
+        // ファイル出力先のログ出力
+        Path outputDir = Paths.get(prop.getString("excel.output.file.dir"));
+        logger.info("ファイル出力先 -> {}", outputDir.toAbsolutePath().normalize());
     }
 
     /**
