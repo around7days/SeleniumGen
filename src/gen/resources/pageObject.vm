@@ -41,15 +41,7 @@ public class ${pageBean.nameToUpperCamel} extends selenium.base.AbstractSelenium
      * @return Page
      */
     public ${pageBean.nameToUpperCamel} initialize() {
-        return (${pageBean.nameToUpperCamel}) PageFactory.initElements(driver, this.getClass());
-    }
-
-    /**
-     * タイトルを取得する。
-     * @return title
-     */
-    public String getTitle() {
-        return driver.getTitle();
+        return PageFactory.initElements(driver, this.getClass());
     }
 
     /* IE操作メソッド ----------------------------------------------------------------------------------------------- */
