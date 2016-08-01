@@ -17,7 +17,15 @@ public class PageConst {
 
     /** HTMLタグ */
     public enum HtmlTag {
-        input, button, textarea, a, select, frame, form;
+        input,    //
+        button,   //
+        textarea, //
+        a,        //
+        select,   //
+        frame,    //
+//        form,
+//        label
+        ;
 
         public static HtmlTag getEnum(String str) {
             if (str == null) return null;
@@ -32,7 +40,11 @@ public class PageConst {
 
     /** 項目属性 */
     public enum ItemAttr {
-        type, id, name, value;
+        type, //
+        id,   //
+        name, //
+        value //
+        ;
 
         public static ItemAttr getEnum(String str) {
             if (str == null) return null;
@@ -47,7 +59,15 @@ public class PageConst {
 
     /** 項目Type属性 */
     public enum ItemAttrType {
-        text, password, radio, file, imgage, checkbox, button, submit;
+        text,     //
+        password, //
+        radio,    //
+        file,     //
+        imgage,   //
+        checkbox, //
+        button,   //
+        submit    //
+        ;
 
         public static ItemAttrType getEnum(String str) {
             if (str == null) return null;
@@ -62,7 +82,13 @@ public class PageConst {
 
     /** FindByアノテーション */
     public enum FindBy {
-        id, name, css, linkText, partialLinkText, xpath;
+        id,              //
+        name,            //
+        css,             //
+        linkText,        //
+        partialLinkText, //
+        xpath            //
+        ;
     }
 
 }

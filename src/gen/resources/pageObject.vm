@@ -1,20 +1,25 @@
-package selenium.sample.page;
+package ${pageBean.package};
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import selenium.base.AbstractSeleniumPage;
-
-
 /**
- * ${pageBean.name}クラス<br>
+ * ${pageBean.nameToUpperCamel}クラス
  */
-public class ${pageBean.name} extends AbstractSeleniumPage {
+public class ${pageBean.nameToUpperCamel} extends selenium.base.AbstractSeleniumPage {
+
+    /** ロガー */
+    @SuppressWarnings("unused")
+    private static final Logger logger = LoggerFactory.getLogger(${pageBean.nameToUpperCamel}.class);
 
     /* 項目変数宣言 ------------------------------------------------------------------------------------------------- */
 #foreach(${itemBean} in ${pageBean.itemList})
@@ -29,6 +34,23 @@ public class ${pageBean.name} extends AbstractSeleniumPage {
   #end
 
 #end
+
+    /* 共通メソッド宣言 ------------------------------------------------------------------------------------------------- */
+    /**
+     * PageFactoryを使用してWebElementをマッピングする
+     * @return Page
+     */
+    public ${pageBean.nameToUpperCamel} initialize() {
+        return (${pageBean.nameToUpperCamel}) PageFactory.initElements(driver, this.getClass());
+    }
+
+    /**
+     * タイトルを取得する。
+     * @return title
+     */
+    public String getTitle() {
+        return driver.getTitle();
+    }
 
     /* IE操作メソッド ----------------------------------------------------------------------------------------------- */
 #foreach(${itemBean} in ${pageBean.itemList})

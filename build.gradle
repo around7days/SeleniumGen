@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 sourceCompatibility = 1.8
 version = '1.0'
@@ -35,4 +36,13 @@ dependencies {
     testCompile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
     testCompile group: 'org.apache.poi', name: 'poi', version: '+'
     testCompile group: 'org.apache.poi', name: 'poi-ooxml', version: '+'
+}
+
+
+task htmlToExcelGen << {
+    mainClassName = 'generate.GenerateHtmlToExcel'
+}
+
+task ExcelToJavaGen << {
+    mainClassName = 'generate.GenerateExcelToJava'
 }

@@ -72,8 +72,13 @@ public class GenerateHtmlToExcel {
         // HTMLファイルパス一覧の取得
         logger.debug("★getFileList");
         List<Path> fileList = getFileList();
+        if (fileList.isEmpty()) {
+            logger.info("対象ファイルなし");
+            return;
+        }
+
         for (Path path : fileList) {
-            logger.info("対象HTMLファイル -> {}", path.toString());
+            logger.info("対象HTMLファイル -> {}", path.toAbsolutePath().normalize());
 
             // HTMLページ解析
             logger.debug("★analyze");
@@ -289,7 +294,7 @@ public class GenerateHtmlToExcel {
              * 結果出力
              */
             workbook.write(new FileOutputStream(outPutFilePath.toString()));
-            logger.debug("結果出力 : {}", outPutFilePath.toString());
+            logger.debug("結果出力 -> {}", outPutFilePath.toString());
         }
     }
 
@@ -354,8 +359,10 @@ public class GenerateHtmlToExcel {
             case frame:
                 itemBean.setOperateFrameChange(ON);
                 break;
-            case form:
-                break;
+            //            case form:
+            //                break;
+            //            case label:
+            //                break;
             default:
                 break;
             }

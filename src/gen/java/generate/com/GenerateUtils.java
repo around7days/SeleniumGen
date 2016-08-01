@@ -75,4 +75,37 @@ public class GenerateUtils {
         return (value == null || value.isEmpty());
     }
 
+    /**
+     * キャメルケース化変換（先頭大文字）<br>
+     * 例）CAMEL_CASE ⇒ CamelCase
+     * @param inputValue 文字列
+     * @return キャメルケース項目
+     */
+    public static String camelCaseUpper(String inputValue) {
+        String value = camelCaseLower(inputValue);
+        return Character.toUpperCase(value.charAt(0)) + value.substring(1, value.length());
+    }
+
+    /**
+     * キャメルケース化変換（先頭小文字）<br>
+     * 例）CAMEL_CASE ⇒ camelCase
+     * @param inputValue 文字列
+     * @return キャメルケース項目
+     */
+    public static String camelCaseLower(String inputValue) {
+        StringBuffer bf = new StringBuffer();
+        for (int i = 0; i < inputValue.length(); i++) {
+            char token = inputValue.charAt(i);
+            if ('_' == token || ' ' == token) {
+                // 「_」or「 」の時、次の文字を大文字に変換
+                token = inputValue.charAt(++i);
+                bf.append(Character.toUpperCase(token));
+            } else {
+                // 上記以外の時、小文字に変換
+                bf.append(Character.toLowerCase(token));
+            }
+        }
+        return bf.toString();
+    }
+
 }

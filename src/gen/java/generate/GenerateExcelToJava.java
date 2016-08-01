@@ -1,10 +1,6 @@
 package generate;
 
 import static generate.com.PageConst.*;
-import generate.bean.ItemBean;
-import generate.bean.PageBean;
-import generate.com.GeneratePropertyManager;
-import generate.com.GenerateUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -24,6 +20,11 @@ import org.apache.velocity.app.Velocity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import generate.bean.ItemBean;
+import generate.bean.PageBean;
+import generate.com.GeneratePropertyManager;
+import generate.com.GenerateUtils;
+
 public class GenerateExcelToJava {
 
     /** Logger */
@@ -38,13 +39,13 @@ public class GenerateExcelToJava {
      */
     public static void main(String[] args) {
 
-        logger.error("処理開始---------------------------------------------------------------------------------------");
+        logger.info("処理開始---------------------------------------------------------------------------------------");
         try {
             new GenerateExcelToJava().execute();
         } catch (Exception e) {
             logger.error("system error", e);
         }
-        logger.error("処理完了---------------------------------------------------------------------------------------");
+        logger.info("処理完了---------------------------------------------------------------------------------------");
 
     }
 
@@ -57,8 +58,13 @@ public class GenerateExcelToJava {
         // Excelファイルパス一覧の取得
         logger.debug("★getFileList");
         List<Path> fileList = getFileList();
+        if (fileList.isEmpty()) {
+            logger.info("対象ファイルなし");
+            return;
+        }
+
         for (Path path : fileList) {
-            logger.debug("対象Excelファイル : {}", path.toString());
+            logger.info("対象Excelファイル -> {}", path.toAbsolutePath().normalize());
 
             // Excelページ解析
             logger.debug("★analyze");
@@ -68,6 +74,10 @@ public class GenerateExcelToJava {
             logger.debug("★generate");
             generate(pageBean);
         }
+
+        // ファイル出力先のログ出力
+        Path outputDir = Paths.get(prop.getString("java.output.file.dir"));
+        logger.info("ファイル出力先 -> {}", outputDir.toAbsolutePath().normalize());
     }
 
     /**
@@ -96,6 +106,8 @@ public class GenerateExcelToJava {
 
         // ページ名称の取得
         pageBean.setName(GenerateUtils.getFileNm(path));
+        // パッケージの取得
+        pageBean.setName(prop.getString("java.output.package"));
 
         // Excelファイルの読込
         try (FileInputStream fis = new FileInputStream(path.toFile()); Workbook workbook = new XSSFWorkbook(fis)) {
@@ -159,7 +171,7 @@ public class GenerateExcelToJava {
     private void generate(PageBean pageBean) throws IOException {
 
         // 出力ファイルパスの生成
-        String fileNm = pageBean.getName() + ".java";
+        String fileNm = pageBean.getNameToUpperCamel() + ".java";
         Path outputPath = Paths.get(prop.getString("java.output.file.dir"), fileNm);
 
         // Velocityの初期化
@@ -185,7 +197,7 @@ public class GenerateExcelToJava {
             pw.flush();
         }
 
-        logger.debug("結果出力 : {}", outputPath.toString());
+        logger.debug("結果出力 -> {}", outputPath.toString());
     }
 
     /**

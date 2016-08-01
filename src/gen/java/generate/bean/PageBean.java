@@ -3,6 +3,8 @@ package generate.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import generate.com.GenerateUtils;
+
 /**
  * ページ情報
  * @author 7days
@@ -21,6 +23,15 @@ public class PageBean {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * ページ名称を取得します。<br>
+     * キャメルケース（先頭大文字）
+     * @return ページ名称
+     */
+    public String getNameToUpperCamel() {
+        return GenerateUtils.camelCaseUpper(name);
     }
 
     /**
