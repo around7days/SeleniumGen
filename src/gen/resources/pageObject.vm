@@ -1,4 +1,4 @@
-package ${pageBean.package};
+package ${pageBean.packageNm};
 
 import java.util.List;
 

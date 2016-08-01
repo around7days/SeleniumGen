@@ -107,7 +107,7 @@ public class GenerateExcelToJava {
         // ページ名称の取得
         pageBean.setName(GenerateUtils.getFileNm(path));
         // パッケージの取得
-        pageBean.setName(prop.getString("java.output.package"));
+        pageBean.setPackageNm(prop.getString("java.output.package"));
 
         // Excelファイルの読込
         try (FileInputStream fis = new FileInputStream(path.toFile()); Workbook workbook = new XSSFWorkbook(fis)) {

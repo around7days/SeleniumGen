@@ -14,6 +14,9 @@ public class PageBean {
     /** ページ名称 */
     private String name;
 
+    /** パッケージ */
+    private String packageNm;
+
     /** 項目リスト */
     private List<ItemBean> itemList = new ArrayList<>();
 
@@ -40,6 +43,22 @@ public class PageBean {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * パッケージを取得します。
+     * @return パッケージ
+     */
+    public String getPackageNm() {
+        return packageNm;
+    }
+
+    /**
+     * パッケージを設定します。
+     * @param packageNm パッケージ
+     */
+    public void setPackageNm(String packageNm) {
+        this.packageNm = packageNm;
     }
 
     /**
