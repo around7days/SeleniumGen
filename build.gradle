@@ -43,6 +43,6 @@ task htmlToExcelGen << {
     mainClassName = 'generate.GenerateHtmlToExcel'
 }
 
-task ExcelToJavaGen << {
+task excelToJavaGen << {
     mainClassName = 'generate.GenerateExcelToJava'
 }
