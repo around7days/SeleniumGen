@@ -35,7 +35,7 @@ public class ${pageBean.nameToUpperCamel} extends selenium.base.AbstractSelenium
 
 #end
 
-    /* 共通メソッド宣言 ------------------------------------------------------------------------------------------------- */
+    /* 共通メソッド宣言 --------------------------------------------------------------------------------------------- */
     /**
      * PageFactoryを使用してWebElementをマッピングする
      * @return Page
@@ -96,7 +96,7 @@ public class ${pageBean.nameToUpperCamel} extends selenium.base.AbstractSelenium
      * @return text
      */
     public String getText${itemBean.item}() {
-        return this.${itemBean.item}.text();
+        return this.${itemBean.item}.getText();
     }
   #end
 
