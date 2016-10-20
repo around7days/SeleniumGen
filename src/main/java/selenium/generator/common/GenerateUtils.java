@@ -1,4 +1,4 @@
-package generate.com;
+package selenium.generator.common;
 
 import java.io.File;
 import java.io.IOException;
@@ -64,15 +64,6 @@ public class GenerateUtils {
         } else {
             return value.toUpperCase();
         }
-    }
-
-    /**
-     * 空白チェック
-     * @param value
-     * @return 結果
-     */
-    public static boolean isEmpty(String value) {
-        return (value == null || value.isEmpty());
     }
 
     /**

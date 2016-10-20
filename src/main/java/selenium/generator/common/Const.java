@@ -1,10 +1,10 @@
-package generate.com;
+package selenium.generator.common;
 
 /**
  * Constクラス<br>
  * @author 7days
  */
-public class PageConst {
+public class Const {
 
     /** Excel明細上限 */
     public static final int EXCEL_DETAIL_MAX = 200;
@@ -23,12 +23,13 @@ public class PageConst {
         a,        //
         select,   //
         frame,    //
-//        form,
-//        label
+        // form,
+        // label
         ;
 
         public static HtmlTag getEnum(String str) {
-            if (str == null) return null;
+            if (str == null)
+                return null;
             for (HtmlTag htmlTag : HtmlTag.values()) {
                 if (htmlTag.name().toLowerCase().equals(str.toLowerCase())) {
                     return htmlTag;
@@ -47,7 +48,8 @@ public class PageConst {
         ;
 
         public static ItemAttr getEnum(String str) {
-            if (str == null) return null;
+            if (str == null)
+                return null;
             for (ItemAttr itemAttr : ItemAttr.values()) {
                 if (itemAttr.name().toLowerCase().equals(str.toLowerCase())) {
                     return itemAttr;
@@ -70,7 +72,8 @@ public class PageConst {
         ;
 
         public static ItemAttrType getEnum(String str) {
-            if (str == null) return null;
+            if (str == null)
+                return null;
             for (ItemAttrType itemAttrType : ItemAttrType.values()) {
                 if (itemAttrType.name().toLowerCase().equals(str.toLowerCase())) {
                     return itemAttrType;

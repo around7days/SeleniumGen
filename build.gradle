@@ -4,20 +4,6 @@ apply plugin: 'application'
 
 sourceCompatibility = 1.8
 version = '1.0'
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
-    }
-}
-
-// Gralde標準外のソースパスを追加
-sourceSets {
-    gen {
-        java      { srcDir 'src/java' }
-        resources { srcDir 'src/resources' }
-    }
-}
 
 repositories {
     mavenCentral()
@@ -26,16 +12,17 @@ repositories {
 dependencies {
     // apache commons
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '+'
+	compile group: 'commons-beanutils', name: 'commons-beanutils', version: '+'
 
     // logging
-//    compile group: 'org.slf4j', name: 'slf4j-simple', version: '+'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '+'
 
     // generate tool
-    testCompile group: 'org.jsoup', name: 'jsoup', version: '+'
-    testCompile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
-    testCompile group: 'org.apache.poi', name: 'poi', version: '+'
-    testCompile group: 'org.apache.poi', name: 'poi-ooxml', version: '+'
+    compile group: 'org.jsoup', name: 'jsoup', version: '+'
+    compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+	compile group: 'org.freemarker', name: 'freemarker', version: '2.+'
+    compile group: 'org.apache.poi', name: 'poi', version: '+'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '+'
 }
 
 

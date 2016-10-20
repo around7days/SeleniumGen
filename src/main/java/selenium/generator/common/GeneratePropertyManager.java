@@ -1,4 +1,4 @@
-package generate.com;
+package selenium.generator.common;
 
 import java.util.ResourceBundle;
 import java.util.TreeSet;
@@ -37,7 +37,7 @@ public enum GeneratePropertyManager {
      * @param key
      * @return keyに対応する値
      */
-    public int getInt(String key) {
+    public int getInteger(String key) {
         String val = getString(key);
         return Integer.valueOf(val);
     }
