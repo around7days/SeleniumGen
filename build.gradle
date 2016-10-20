@@ -19,7 +19,6 @@ dependencies {
 
     // generate tool
     compile group: 'org.jsoup', name: 'jsoup', version: '+'
-    compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 	compile group: 'org.freemarker', name: 'freemarker', version: '2.+'
     compile group: 'org.apache.poi', name: 'poi', version: '+'
     compile group: 'org.apache.poi', name: 'poi-ooxml', version: '+'
@@ -27,9 +26,9 @@ dependencies {
 
 
 task htmlToExcelGen << {
-    mainClassName = 'generate.GenerateHtmlToExcel'
+    mainClassName = 'selenium.generator.main.HtmlToExcelMain'
 }
 
 task excelToJavaGen << {
-    mainClassName = 'generate.GenerateExcelToJava'
+    mainClassName = 'selenium.generator.main.ExcelToJavaMain'
 }
