@@ -43,6 +43,19 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
         return PageFactory.initElements(driver, this.getClass());
     }
 
+<#list pageBean.itemList as itemBean>
+  <#-- ####### 共通 -->
+  <#if itemBean.findByCnt?has_content>
+  public List<WebElement> ${itemBean.item}() {
+      return this.${itemBean.item};
+  }
+  <#else>
+  public WebElement ${itemBean.item}() {
+      return this.${itemBean.item};
+  }
+  </#if>
+</#list>
+
     /* IE操作メソッド ----------------------------------------------------------------------------------------------- */
 <#list pageBean.itemList as itemBean>
   <#-- ####### sendkeys -->
@@ -52,15 +65,15 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
        * ${itemBean.item}に値を入力します。
        * @param sendKeys
        */
-      public void sendkeys${itemBean.item}(String sendKeys) {
-          sendkeys${itemBean.item}(sendKeys, 0);
+      public void ${itemBean.item}sendkeys(String sendKeys) {
+          ${itemBean.item}sendkeys(sendKeys, 0);
       }
       /**
        * ${itemBean.item}に値を入力します。
        * @param sendKeys
        * @param index
        */
-      public void sendkeys${itemBean.item}(String sendKeys, int index) {
+      public void ${itemBean.item}sendkeys(String sendKeys, int index) {
           this.${itemBean.item}.get(index).clear();
           this.${itemBean.item}.get(index).sendKeys(sendKeys);
       }
@@ -69,7 +82,7 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
        * ${itemBean.item}に値を入力します。
        * @param sendKeys
        */
-      public void sendkeys${itemBean.item}(String sendKeys) {
+      public void ${itemBean.item}sendkeys(String sendKeys) {
           this.${itemBean.item}.clear();
           this.${itemBean.item}.sendKeys(sendKeys);
       }
@@ -82,7 +95,7 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
      * ${itemBean.item}の値を取得します。
      * @return value
      */
-    public String getValue${itemBean.item}() {
+    public String ${itemBean.item}getValue() {
         return this.${itemBean.item}.getAttribute("value");
     }
   </#if>
@@ -93,7 +106,7 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
      * ${itemBean.item}の値を取得します。
      * @return text
      */
-    public String getText${itemBean.item}() {
+    public String ${itemBean.item}getText() {
         return this.${itemBean.item}.getText();
     }
   </#if>
@@ -104,21 +117,21 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
       /**
        * ${itemBean.item}をクリックします。
        */
-      public void click${itemBean.item}() {
-          click${itemBean.item}(0);
+      public void ${itemBean.item}click() {
+          ${itemBean.item}click(0);
       }
       /**
        * ${itemBean.item}をクリックします。
        * @param index
        */
-      public void click${itemBean.item}(int index) {
+      public void ${itemBean.item}click(int index) {
           this.${itemBean.item}.get(index).click();
       }
     <#else>
       /**
        * ${itemBean.item}をクリックします。
        */
-      public void click${itemBean.item}() {
+      public void ${itemBean.item}click() {
           this.${itemBean.item}.click();
       }
     </#if>
@@ -130,7 +143,7 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
      * ${itemBean.item}を選択します。
      * @param index
      */
-    public void selectByIndex${itemBean.item}(int index) {
+    public void ${itemBean.item}selectByIndex(int index) {
         new Select(this.${itemBean.item}).selectByIndex(index);
     }
   </#if>
@@ -141,7 +154,7 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
      * ${itemBean.item}を選択します。
      * @param value
      */
-    public void selectByValue${itemBean.item}(String value) {
+    public void ${itemBean.item}selectByValue(String value) {
         new Select(this.${itemBean.item}).selectByValue(value);
     }
   </#if>
@@ -152,7 +165,7 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
      * ${itemBean.item} を選択します。
      * @param visibleText
      */
-    public void selectByVisibleText${itemBean.item}(String visibleText) {
+    public void ${itemBean.item}selectByVisibleText(String visibleText) {
         new Select(this.${itemBean.item}).selectByVisibleText(visibleText);
     }
   </#if>
@@ -162,7 +175,7 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
     /**
      * 対象Frameを ${itemBean.item} に変更します。
      */
-    public WebDriver frameChange${itemBean.item}() {
+    public WebDriver ${itemBean.item}frameChange() {
         return driver.switchTo().frame(${itemBean.item});
     }
   </#if>
