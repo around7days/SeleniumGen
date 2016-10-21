@@ -35,24 +35,6 @@ public class ExcelItemBean {
     /** 選択方法の取得数 */
     private String findByCnt;
 
-    /* ------------------------------- */
-    /** 値選択 */
-    private String operateSendKeys;
-    /** 値取得(value) */
-    private String operateGetValue;
-    /** 値取得(text) */
-    private String operateGetText;
-    /** クリック */
-    private String operateClick;
-    /** 選択(index) */
-    private String operateSelectIndex;
-    /** 選択(value) */
-    private String operateSelectValue;
-    /** 選択(text) */
-    private String operateSelectText;
-    /** Frame変更 */
-    private String operateFrameChange;
-
     public String getHtml() {
         return html;
     }
@@ -147,70 +129,6 @@ public class ExcelItemBean {
 
     public void setFindByCnt(String findByCnt) {
         this.findByCnt = findByCnt;
-    }
-
-    public String getOperateSendKeys() {
-        return operateSendKeys;
-    }
-
-    public void setOperateSendKeys(String operateSendKeys) {
-        this.operateSendKeys = operateSendKeys;
-    }
-
-    public String getOperateGetValue() {
-        return operateGetValue;
-    }
-
-    public void setOperateGetValue(String operateGetValue) {
-        this.operateGetValue = operateGetValue;
-    }
-
-    public String getOperateGetText() {
-        return operateGetText;
-    }
-
-    public void setOperateGetText(String operateGetText) {
-        this.operateGetText = operateGetText;
-    }
-
-    public String getOperateClick() {
-        return operateClick;
-    }
-
-    public void setOperateClick(String operateClick) {
-        this.operateClick = operateClick;
-    }
-
-    public String getOperateSelectIndex() {
-        return operateSelectIndex;
-    }
-
-    public void setOperateSelectIndex(String operateSelectIndex) {
-        this.operateSelectIndex = operateSelectIndex;
-    }
-
-    public String getOperateSelectValue() {
-        return operateSelectValue;
-    }
-
-    public void setOperateSelectValue(String operateSelectValue) {
-        this.operateSelectValue = operateSelectValue;
-    }
-
-    public String getOperateSelectText() {
-        return operateSelectText;
-    }
-
-    public void setOperateSelectText(String operateSelectText) {
-        this.operateSelectText = operateSelectText;
-    }
-
-    public String getOperateFrameChange() {
-        return operateFrameChange;
-    }
-
-    public void setOperateFrameChange(String operateFrameChange) {
-        this.operateFrameChange = operateFrameChange;
     }
 
 }

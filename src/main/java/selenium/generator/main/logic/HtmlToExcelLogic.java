@@ -28,7 +28,6 @@ import org.slf4j.LoggerFactory;
 import selenium.generator.common.Const.FindBy;
 import selenium.generator.common.Const.HtmlTag;
 import selenium.generator.common.Const.ItemAttr;
-import selenium.generator.common.Const.ItemAttrType;
 import selenium.generator.common.GeneratePropertyManager;
 import selenium.generator.common.GenerateUtils;
 import selenium.generator.main.bean.ExcelBean;
@@ -109,8 +108,6 @@ public class HtmlToExcelLogic {
 
             // FindBy情報を生成
             makeFindByInfo(excelItemBean);
-            // Operate情報を生成
-            makeOperateInfo(excelItemBean);
 
             // ExcelBeanに格納
             excelBean.getItemList().add(excelItemBean);
@@ -171,15 +168,6 @@ public class HtmlToExcelLogic {
                 setCellValue(row, "excel.item.findby.col", itemBean.getFindBy()); // 選択方法
                 setCellValue(row, "excel.item.findby.val.col", itemBean.getFindByVal()); // 選択値
                 setCellValue(row, "excel.item.findby.cnt.col", itemBean.getFindByCnt()); // 取得数
-                // Java実装
-                setCellValue(row, "excel.java.sendkeys.col", itemBean.getOperateSendKeys()); // 値設定
-                setCellValue(row, "excel.java.get.value.col", itemBean.getOperateGetValue()); // 値取得(value)
-                setCellValue(row, "excel.java.get.text.col", itemBean.getOperateGetText()); // 値取得(text)
-                setCellValue(row, "excel.java.click.col", itemBean.getOperateClick()); // クリック
-                setCellValue(row, "excel.java.select.index.col", itemBean.getOperateSelectIndex()); // 選択(index)
-                setCellValue(row, "excel.java.select.value.col", itemBean.getOperateSelectValue()); // 選択(value)
-                setCellValue(row, "excel.java.select.text.col", itemBean.getOperateSelectText()); // 選択(text)
-                setCellValue(row, "excel.java.frame.change.col", itemBean.getOperateFrameChange()); // Frame変更
 
                 targetRow++;
             }
@@ -277,7 +265,7 @@ public class HtmlToExcelLogic {
     private HtmlItemBean existsItemBean(List<HtmlItemBean> itemBeanList,
                                         HtmlItemBean itemBean) {
         for (HtmlItemBean tempBean : itemBeanList) {
-            if (itemBean.toString().equals(tempBean.toString())) { // TODO 比較方法がちょっと手抜き・・・
+            if (itemBean.getHtml().equals(tempBean.getHtml())) {
                 return tempBean;
             }
         }
@@ -319,64 +307,6 @@ public class HtmlToExcelLogic {
 
         if (itemBean.getCount() > 1) {
             itemBean.setFindByCnt(CNT_MULTI);
-        }
-    }
-
-    /**
-     * Operate情報を生成
-     * @param itemBean
-     */
-    private void makeOperateInfo(ExcelItemBean itemBean) {
-
-        // タグ情報で判断
-        HtmlTag tag = HtmlTag.getEnum(itemBean.getTag());
-        if (tag != null) {
-            switch (tag) {
-            case a:
-            case button:
-                itemBean.setOperateClick(ON);
-                break;
-            case select:
-                itemBean.setOperateSelectIndex(ON);
-                itemBean.setOperateSelectText(ON);
-                itemBean.setOperateSelectValue(ON);
-                break;
-            case textarea:
-                itemBean.setOperateSendKeys(ON);
-                break;
-            case input:
-                break;
-            case frame:
-                itemBean.setOperateFrameChange(ON);
-                break;
-            // case form:
-            // break;
-            // case label:
-            // break;
-            default:
-                break;
-            }
-
-        }
-
-        // input type情報で判断
-        ItemAttrType type = ItemAttrType.getEnum(itemBean.getType());
-        if (type != null) {
-            switch (type) {
-            case checkbox:
-            case button:
-            case submit:
-            case radio:
-            case imgage:
-                itemBean.setOperateClick(ON);
-                break;
-            case text:
-            case password:
-                itemBean.setOperateSendKeys(ON);
-                break;
-            case file:
-                break;
-            }
         }
     }
 

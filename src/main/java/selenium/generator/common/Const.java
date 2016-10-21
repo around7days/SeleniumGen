@@ -12,9 +12,6 @@ public class Const {
     /** 選択結果（重複） */
     public static final String CNT_MULTI = "複数";
 
-    /** 選択 */
-    public static final String ON = "○";
-
     /** HTMLタグ */
     public enum HtmlTag {
         input,    //
@@ -64,11 +61,15 @@ public class Const {
         text,     //
         password, //
         radio,    //
+        checkbox, //
+        submit,    //
+        button,   //
+        hidden,   //
+        number,   //
+        email,   //
         file,     //
         imgage,   //
-        checkbox, //
-        button,   //
-        submit    //
+        reset,   //
         ;
 
         public static ItemAttrType getEnum(String str) {

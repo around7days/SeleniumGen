@@ -99,15 +99,6 @@ public class ExcelToJavaLogic {
                 itemBean.setFindBy(getCellValue(row, "excel.item.findby.col")); // 選択方法
                 itemBean.setFindByVal(getCellValue(row, "excel.item.findby.val.col")); // 選択値
                 itemBean.setFindByCnt(getCellValue(row, "excel.item.findby.cnt.col")); // 取得数
-                // Java実装
-                itemBean.setOperateSendKeys(getCellValue(row, "excel.java.sendkeys.col")); // 値設定
-                itemBean.setOperateGetValue(getCellValue(row, "excel.java.get.value.col")); // 値取得(value)
-                itemBean.setOperateGetText(getCellValue(row, "excel.java.get.text.col")); // 値取得(text)
-                itemBean.setOperateClick(getCellValue(row, "excel.java.click.col")); // クリック
-                itemBean.setOperateSelectIndex(getCellValue(row, "excel.java.select.index.col")); // 選択(index)
-                itemBean.setOperateSelectValue(getCellValue(row, "excel.java.select.value.col")); // 選択(value)
-                itemBean.setOperateSelectText(getCellValue(row, "excel.java.select.text.col")); // 選択(text)
-                itemBean.setOperateFrameChange(getCellValue(row, "excel.java.frame.change.col")); // フレーム変更
 
                 targetRow++;
 

@@ -1,7 +1,5 @@
 package selenium.generator.main.bean;
 
-import java.util.StringJoiner;
-
 /**
  * HTMLItem情報
  * @author 7days
@@ -95,18 +93,6 @@ public class HtmlItemBean {
      */
     public void addCount() {
         this.count++;
-    }
-
-    @Override
-    public String toString() {
-        StringJoiner sj = new StringJoiner(",");
-        sj.add("tag:" + tag);
-        sj.add("type:" + type);
-        sj.add("id:" + id);
-        sj.add("name:" + name);
-        sj.add("value:" + value);
-        sj.add("text:" + text);
-        return sj.toString();
     }
 
 }
