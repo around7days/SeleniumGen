@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 /**
  * ${pageBean.classNm}クラス
@@ -21,7 +20,6 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
     @SuppressWarnings("unused")
     private static final Logger logger = LoggerFactory.getLogger(${pageBean.classNm}.class);
 
-    /* 項目変数宣言 ------------------------------------------------------------------------------------------------- */
 <#list pageBean.itemList as itemBean>
     /** ${itemBean.item} */
     @FindBy(${itemBean.findBy} = "${itemBean.findByVal}")
@@ -34,17 +32,16 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
 
 </#list>
 
-    /* 共通メソッド宣言 --------------------------------------------------------------------------------------------- */
     /**
      * PageFactoryを使用してWebElementをマッピングする
-     * @return Page
+     * @param driver
+     * @return ${pageBean.classNm}
      */
-    public ${pageBean.classNm} initialize() {
+    public ${pageBean.classNm} initialize(WebDriver driver) {
         return PageFactory.initElements(driver, this.getClass());
     }
 
 <#list pageBean.itemList as itemBean>
-  <#-- ####### 共通 -->
   <#if itemBean.findByCnt?has_content>
   public List<WebElement> ${itemBean.item}() {
       return this.${itemBean.item};
@@ -56,7 +53,9 @@ public class ${pageBean.classNm} <#if pageBean.extendsClassNm?has_content> exten
   </#if>
 </#list>
 
-    /* IE操作メソッド ----------------------------------------------------------------------------------------------- */
+<#--
+以下は現在未使用（どこかのタイミングで削除予定
+-->
 <#list pageBean.itemList as itemBean>
   <#-- ####### sendkeys -->
   <#if itemBean.operateSendKeys?has_content>
